@@ -1,0 +1,56 @@
+# 服务器配置
+server:
+    port: 8080
+
+# MyBatis配置文件
+mybatis:
+    mapper-locations: classpath*:mapper/**/*SqlMap.xml
+
+# Spring配置
+spring:
+    aop:
+        auto: true
+    datasource:
+        schema: classpath:init-sql/*.sql
+        url: jdbc:h2:~/solomon
+        driverClassName: org.h2.Driver
+        username: solomon
+        password: 2875392
+        type: com.alibaba.druid.pool.DruidDataSource
+        filters: stat
+        maxActive: 1000
+        initialSize: 5
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x' from dual
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    thymeleaf:
+        prefix: classpath:/templates/
+        suffix: .html
+        encoding: UTF-8
+        mode: HTML5
+        content: text/html
+        cache: false
+
+# redis数据库连接配置(covert)
+redisConfig:
+    # Redis数据库索引(默认为0)
+    database: 0
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    # Redis服务器连接密码（默认为空）
+    password: 
+    # 链接管理
+    pool: 
+      max-idle: 8
+      min-idle: 0
+      max-active: 10
+      max-wait: -1
