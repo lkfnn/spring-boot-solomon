@@ -1,6 +1,6 @@
 # spring-boot-solomon
 
-Spring-Boot 开发微服务实践。
+Spring-Boot 开发微服务实践，用Docker容器发布。
 
 项目采用Maven构建。
 
