@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>用户列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../static/bootstrap/css/bootstrap.min.css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+<!-- 页面显示部分 -->
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <h4>用户列表</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user:${userList}">
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.username}"></td>
+                        <td th:text="${user.password}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="../static/jquery/jquery.min.js" th:href="@{/jquery/jquery.min.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js" th:href="@{/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>

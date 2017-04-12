@@ -5,16 +5,16 @@ import java.util.List;
 import org.solomon.dto.UserDTO;
 import org.solomon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * HelloWorldController
  * 
  * @author likf
  */
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
 
@@ -22,9 +22,10 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public List<UserDTO> findUserList() {
-        List<UserDTO> list = userService.findAllUsers();
-        return list;
+    public String findUserList(org.springframework.ui.Model Model) {
+        List<UserDTO> userList = userService.findAllUsers();
+        Model.addAttribute("userList", userList);
+        return "userList";
     }
 
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)
