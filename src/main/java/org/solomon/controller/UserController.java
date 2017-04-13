@@ -5,27 +5,36 @@ import java.util.List;
 import org.solomon.dto.UserDTO;
 import org.solomon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * HelloWorldController
  * 
  * @author likf
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/userList", method = RequestMethod.GET)
-    public String findUserList(org.springframework.ui.Model Model) {
+    @RequestMapping(value = "/findUserList", method = RequestMethod.GET)
+    public ModelAndView findUserList() {
         List<UserDTO> userList = userService.findAllUsers();
-        Model.addAttribute("userList", userList);
-        return "userList";
+        ModelAndView mav = new ModelAndView("userList");
+        mav.addObject("userList", userList);
+        return mav;
+    }
+
+    @RequestMapping(value = "/userList", method = RequestMethod.GET)
+    public List<UserDTO> findUserListJson(Model Model) {
+        List<UserDTO> userList = userService.findAllUsers();
+        return userList;
     }
 
     @RequestMapping(value = "/insertUser", method = RequestMethod.POST)

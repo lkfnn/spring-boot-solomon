@@ -24,10 +24,6 @@ spring:
         minIdle: 1
         timeBetweenEvictionRunsMillis: 60000
         minEvictableIdleTimeMillis: 300000
-        validationQuery: select 'x' from dual
-        testWhileIdle: true
-        testOnBorrow: false
-        testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
     thymeleaf:
