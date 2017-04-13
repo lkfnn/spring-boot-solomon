@@ -20,7 +20,7 @@ public class DruidConfiguration {
     /**
      * 注册一个StatViewServlet
      * 
-     * @return
+     * @return ServletRegistrationBean
      */
     @Bean
     public ServletRegistrationBean DruidStatViewServle2() {
@@ -42,7 +42,7 @@ public class DruidConfiguration {
     /**
      * 注册一个：filterRegistrationBean
      * 
-     * @return
+     * @return FilterRegistrationBean
      */
     @Bean
     public FilterRegistrationBean druidStatFilter2() {
