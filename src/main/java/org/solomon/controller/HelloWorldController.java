@@ -4,35 +4,33 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * HelloWorldController
  * 
  * @author likf
  */
-@Controller
+@RestController
 public class HelloWorldController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(ModelMap map) {
-        map.addAttribute("index", "Hello Home Page");
-        return "/index";
+    public ModelAndView index() {
+        ModelAndView mav = new ModelAndView("index");
+        mav.addObject("say", "Hello World");
+        return mav;
     }
 
     @RequestMapping(value = "/say/{say}", method = RequestMethod.GET)
-    @ResponseBody
     public String sayHelloWorld(@PathVariable String say) {
         return say;
     }
 
     @RequestMapping(value = "/listMap", method = RequestMethod.GET)
-    @ResponseBody
     public List<LinkedHashMap<String, String>> listMap() {
         List<LinkedHashMap<String, String>> list = new ArrayList<LinkedHashMap<String, String>>();
 
